@@ -186,7 +186,9 @@ export function renderResult(result) {
     </li>`;
   }).join('');
 
-  const meta = `${result.tactics.length} ${t('count')} · ${result.matches.length} ${t('marks')} · ${t('ruleset')}: ${result.ruleCount} / ${result.patternCount}`;
+  const meta = LANG === 'ko'
+    ? `${result.tactics.length}가지 압박 · ${result.matches.length}곳 표시 · 규칙 ${result.ruleCount}종 / 문구 ${result.patternCount}개`
+    : `${result.tactics.length} kinds of pressure · ${result.matches.length} marks · rule set: ${result.ruleCount} rules / ${result.patternCount} phrases`;
 
   out.innerHTML = `
   <section class="verdict band-${result.band}">
