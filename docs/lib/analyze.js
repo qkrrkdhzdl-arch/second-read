@@ -40,7 +40,10 @@ export function findMatches(text) {
       }
     }
   }
-  return out.sort((a, b) => a.start - b.start || b.end - a.end);
+  /* "http://kb-star.top/x" also matches the bare-domain rule. The shorter
+     match adds nothing, so keep the longer one; the tactic count stays honest. */
+  const sorted = out.sort((a, b) => a.start - b.start || b.end - a.end);
+  return sorted.filter((m, i) => !sorted.some((o, j) => j !== i && o.tacticId === m.tacticId && o.start <= m.start && o.end >= m.end && (o.end - o.start) > (m.end - m.start)));
 }
 
 /* Two matches on the same words (e.g. "안전계좌" inside a money rule) would
@@ -133,13 +136,17 @@ export function analyze(text, opts = {}) {
 
   const domainWarnings = [];
   for (const claim of claims) {
+    const tokens = orgTokens(claim);
     for (const url of links) {
       const host = hostOf(url);
       if (!host) continue;
       const reg = registrableDomain(host);
-      if (!claim.domains.includes(reg)) {
-        domainWarnings.push({ claim: claim.name, url, host, reg, official: claim.domains });
-      }
+      if (claim.domains.includes(reg)) continue;
+      const flat = reg.replace(/[^a-z0-9]/g, '');
+      /* A message can name an agency and link to a news article about it.
+         Only warn when the address itself wears that name. */
+      if (tokens.length && !tokens.some((tk) => flat.includes(tk))) continue;
+      domainWarnings.push({ claim: claim.name, url, host, reg, official: claim.domains });
     }
   }
 
@@ -159,6 +166,15 @@ export function analyze(text, opts = {}) {
     ruleCount: TACTICS.length,
     patternCount: TACTICS.reduce((n, t) => n + t.patterns.length, 0),
   };
+}
+
+export function orgTokens(claim) {
+  const tokens = [];
+  for (const d of claim.domains) {
+    const label = d.split('.').slice(0, -1).join('').replace(/[^a-z0-9]/g, '');
+    if (label.length >= 4 && !tokens.includes(label)) tokens.push(label);
+  }
+  return tokens;
 }
 
 export function hostOf(url) {
