@@ -7,7 +7,13 @@ A text message arrives. It says an account is frozen, a parcel is stuck, a child
 Second Read answers that on the spot, in the browser, without sending the message anywhere.
 
 - **Live:** https://qkrrkdhzdl-arch.github.io/second-read/
-- **Tests:** https://qkrrkdhzdl-arch.github.io/second-read/tests.html
+- **Tests:** https://qkrrkdhzdl-arch.github.io/second-read/tests.html (94/94)
+
+![The reading, the marks, and the same message untouched](docs/shots/01-verdict.png)
+![Address check without opening the address](docs/shots/02-address-check.png)
+![Channels the message cannot touch, and the card for the fridge](docs/shots/03-verify-card.png)
+![Korean](docs/shots/04-korean.png)
+![94 assertions in a real browser](docs/shots/05-tests.png)
 
 ---
 
