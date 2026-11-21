@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Read — tests</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", sans-serif; margin: 0; padding: 28px 20px; background: #fbfaf7; color: #14181d; }
+  main { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  p.lead { color: #6a7480; font-size: 14px; margin: 0 0 18px; }
+  #summary { font-size: 17px; font-weight: 600; padding: 12px 16px; border-radius: 10px; background: #eef3f0; margin-bottom: 16px; }
+  #summary.bad { background: #fdf1e6; color: #8a3a12; }
+  ul { list-style: none; padding: 0; margin: 0; font-size: 14px; }
+  li { padding: 3px 0; border-bottom: 1px solid #eee9df; }
+  .pass::before { content: "PASS "; color: #1b6b4a; font-weight: 700; font-size: 12px; }
+  .fail::before { content: "FAIL "; color: #a3301a; font-weight: 700; font-size: 12px; }
+  .detail { color: #8a3a12; display: block; font-family: ui-monospace, monospace; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Second Read — test suite</h1>
+  <p class="lead">The same assertions run in <code>tools/run_tests.py</code> against this page in a real browser.</p>
+  <div id="summary">Running…</div>
+  <ul id="list"></ul>
+</main>
+<script type="module">
+import { runTests } from './tests.js';
+const list = document.getElementById('list');
+const summary = document.getElementById('summary');
+const started = performance.now();
+const results = await runTests();
+for (const r of results) {
+  const li = document.createElement('li');
+  li.className = r.pass ? 'pass' : 'fail';
+  li.textContent = r.name;
+  if (!r.pass && r.detail) {
+    const d = document.createElement('span');
+    d.className = 'detail';
+    d.textContent = r.detail;
+    li.appendChild(d);
+  }
+  list.appendChild(li);
+}
+const failed = results.filter((r) => !r.pass).length;
+summary.textContent = `${results.length - failed} / ${results.length} passed in ${Math.round(performance.now() - started)}ms`;
+if (failed) summary.className = 'bad';
+</script>
+</body>
+</html>

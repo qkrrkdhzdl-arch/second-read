@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Read — read a suspicious message twice before you act</title>
+<meta name="description" content="A local, offline reader for suspicious text messages: it marks the words that known scams use, explains each one, and shows how to verify the message without using anything in it.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#paste" data-i18n="skip">Skip to the message box</a>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">2R</span>
+      <div>
+        <h1>Second Read</h1>
+        <p class="tagline" data-i18n="tagline">Read a suspicious message twice before you act.</p>
+      </div>
+    </div>
+    <div class="head-actions">
+      <button id="lang" class="ghost" type="button" aria-label="Switch language">한국어</button>
+      <a class="ghost" href="#how" data-i18n="how">How it works</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="lede" data-i18n="lede">Paste the message. It never leaves this page — no account, no upload, no network call. You get the exact words that scammers use, what each one is doing, and how to check the message without touching anything inside it.</p>
+  </section>
+
+  <section id="paste" class="wrap card">
+    <label class="label" for="msg" data-i18n="pasteLabel">The message</label>
+    <textarea id="msg" rows="7" spellcheck="false" placeholder="Paste the text message here…" data-i18n-placeholder="placeholder"></textarea>
+    <div class="row">
+      <button id="run" class="primary" type="button" data-i18n="read">Read it</button>
+      <button id="clear" class="ghost" type="button" data-i18n="clear">Clear</button>
+      <span class="samples">
+        <span data-i18n="samples">Samples:</span>
+        <button class="chip" type="button" data-sample="authority">기관 사칭</button>
+        <button class="chip" type="button" data-sample="family">가족 사칭</button>
+        <button class="chip" type="button" data-sample="ordinary">평범한 문자</button>
+      </span>
+    </div>
+    <p class="fine" data-i18n="fine">Nothing is saved. Closing the tab clears the message.</p>
+  </section>
+
+  <div id="out" class="wrap" aria-live="polite"></div>
+
+  <section id="how" class="wrap card prose">
+    <h2 data-i18n="howTitle">How it works, and what it cannot do</h2>
+    <ul>
+      <li data-i18n="how1">It matches words, not meaning. Every mark on the right is a phrase in a rule set built from published scam warnings — 기관 사칭, 안전계좌, 인증번호 요구, 가족 사칭, 택배 사칭, 선입금 대출, 리딩방, 환급금.</li>
+      <li data-i18n="how2">It counts different kinds of pressure, not how bad a message is. A message with no marks is "no known pattern", never "safe".</li>
+      <li data-i18n="how3">It reads an address' shape without opening it: IP hosts, an "@" that hides the real host, punycode, shorteners, a bank's name sitting on a domain that is not the bank's.</li>
+      <li data-i18n="how4">It does not know your bank, your family, or whether a link is live. It cannot see images or PDFs, and it does not read Korean or English outside the phrases listed.</li>
+    </ul>
+    <p class="fine" data-i18n="how5">No account, no server, no analytics. The page loads once and works offline; you can check the source on GitHub and watch the network tab stay empty.</p>
+  </section>
+</main>
+
+<footer class="site wrap">
+  <p data-i18n="footer">Second Read is a prototype, not an emergency service. If money has already left your account, call 112 (police) or 1332 (Financial Supervisory Service) — the numbers printed on those organisations' own websites.</p>
+  <p class="fine"><span data-i18n="built">Built for SafeSpace Hacks, 2026.</span> · <a href="tests.html" data-i18n="tests">Tests</a></p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
