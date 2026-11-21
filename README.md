@@ -50,12 +50,12 @@ No framework, no build step, no dependencies, no network calls after load.
 
 | File | What it does |
 | --- | --- |
-| `docs/lib/rules.js` | 16 kinds of pressure, 60+ Korean and English phrases, each with a reason, an alternative action, and the official domains/numbers of the institutions most often impersonated |
+| `docs/lib/rules.js` | 17 kinds of pressure, 60+ Korean and English phrases, each with a reason, an alternative action, and the official domains/numbers of the institutions most often impersonated |
 | `docs/lib/analyze.js` | match collection, span resolution (the stronger rule keeps an overlapping span; the weaker still counts), banding, claim↔domain comparison |
 | `docs/lib/link.js` | an address parser and shape inspector — 11 signals, no fetching, no DNS |
 | `docs/lib/text.js` | escaping and length-preserving normalisation so character offsets stay true |
 | `docs/app.js` | rendering, bilingual copy, printable card, copy-summary |
-| `docs/tests.js` | 90 assertions, run in the browser and in an embedded engine |
+| `docs/tests.js` | 94 assertions, run in the browser and in an embedded engine |
 
 **Version control note:** the repository has no third-party code, data, or assets. Every line was written on 2026-11-21 for this hackathon; nothing is pre-existing, so there is nothing to credit beyond the published scam warnings the phrase list is drawn from.
 

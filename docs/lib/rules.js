@@ -76,6 +76,24 @@ export const TACTICS = [
     ],
   },
   {
+    id: 'account_number',
+    weight: 1,
+    hitNoun: { ko: '계좌번호', en: 'account number' },
+    label: { ko: '계좌번호로 보이는 숫자가 있습니다', en: 'It contains something shaped like an account number' },
+    why: {
+      ko: '은행 계좌번호는 보통 3~4묶음의 숫자로 옵니다. 메시지에 계좌번호가 적혀 있다는 것은, 보내는 쪽이 받는 사람을 정해 두었다는 뜻입니다.',
+      en: 'A bank account number usually arrives as three or four groups of digits. An account number written into the message means the sender already picked where the money should go.',
+    },
+    then: {
+      ko: '그 계좌로 보내지 마세요. 아는 사람이라면 평소 번호로 확인하고, 모르는 사람이면 보내지 않는 것이 답입니다.',
+      en: 'Do not use that account. If it is someone you know, check on the number you already have; if not, do not send.',
+    },
+    patterns: [
+      '\\b\\d{2,6}-\\d{2,6}-\\d{4,8}\\b',
+      '(계좌\\s*번호|입금\\s*계좌)[^\\n]{0,12}\\d{4}',
+    ],
+  },
+  {
     id: 'app_install',
     weight: 3,
     hitNoun: { ko: '앱 설치 유도', en: 'app install' },

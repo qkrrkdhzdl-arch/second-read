@@ -52,6 +52,7 @@ export async function runTests() {
     ['refund', '숨은 환급금 신청하세요.'],
     ['prize', '축하합니다. 당첨되셨습니다.'],
     ['credential_soft', '주민등록번호를 적어 보내주세요.'],
+    ['account_number', '국민은행 123456-01-234567 로 보내주세요.'],
   ];
   for (const [id, text] of ko) check(`KO fires: ${id}`, has(text, id), `got [${hits(text).join(', ')}] for "${text}"`);
 
@@ -82,6 +83,9 @@ export async function runTests() {
     '내일 3시에 미팅 가능하실까요? 장소는 서면 근처 카페입니다.',
     '감사합니다. 택배 잘 받았습니다.', // one match is allowed: 택배 + 받? -> checked below
   ];
+  check('a mobile number is not read as an account number', !has('담당자 010-2345-6789로 연락주세요.', 'account_number'), hits('담당자 010-2345-6789로 연락주세요.').join(','));
+  check('a landline is not read as an account number', !has('02-123-4567 로 전화주세요.', 'account_number'), hits('02-123-4567 로 전화주세요.').join(','));
+  check('a hyphenated bank account is read as one', has('국민은행 123456-01-234567', 'account_number'));
   check('ordinary message 1 has no marks', hits(quiet[0]).length === 0, hits(quiet[0]).join(','));
   check('ordinary message 2 has no marks', hits(quiet[1]).length === 0, hits(quiet[1]).join(','));
   const third = analyze(quiet[2]);

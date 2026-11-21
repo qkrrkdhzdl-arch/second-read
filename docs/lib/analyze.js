@@ -30,6 +30,13 @@ export function findMatches(text) {
       let m;
       while ((m = re.exec(hay)) !== null) {
         if (m[0].length === 0) { re.lastIndex += 1; continue; }
+        /* A phone number is not an account number: 010-2345-6789 and
+           02-123-4567 have the same shape. Require ten digits or more and
+           no mobile prefix before calling it an account number. */
+        if (tactic.id === 'account_number') {
+          const digits = m[0].replace(/\D/g, '');
+          if (digits.length < 10 || /^01/.test(digits)) { continue; }
+        }
         out.push({
           tacticId: tactic.id,
           weight: tactic.weight,
