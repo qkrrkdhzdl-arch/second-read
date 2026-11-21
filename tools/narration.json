@@ -1,0 +1,112 @@
+{
+  "scenes": [
+    {
+      "id": "s01",
+      "shot": "title",
+      "caption": "Read a suspicious message twice before you act.",
+      "say": "A message arrives. Your account is frozen. Twenty four hours. A link. And an instruction to move your money to a safe account. Everything in it is built to move you before you think."
+    },
+    {
+      "id": "s02",
+      "shot": "01-verdict.png",
+      "crop": [
+        500,
+        15,
+        1405,
+        380
+      ],
+      "caption": "Paste the message. It never leaves the page.",
+      "say": "Second Read takes the message you actually have. You paste it, and it never leaves the page. No account, no upload, no network call."
+    },
+    {
+      "id": "s03",
+      "shot": "01-verdict.png",
+      "crop": [
+        500,
+        400,
+        1405,
+        700
+      ],
+      "caption": "It counts kinds of pressure, not badness.",
+      "say": "It does not give a score. It counts how many different kinds of pressure appear at once. No known pattern, a few signals, several, or many. And a message with no marks is called no known pattern, never safe."
+    },
+    {
+      "id": "s04",
+      "shot": "01-verdict.png",
+      "crop": [
+        500,
+        700,
+        1405,
+        960
+      ],
+      "caption": "The words are marked in place. Nothing is rewritten.",
+      "say": "The words are marked in place, in the sentence you were about to act on. Nothing is rewritten, so you can see the machinery inside the message itself."
+    },
+    {
+      "id": "s05",
+      "shot": "02-address-check.png",
+      "crop": [
+        500,
+        60,
+        1405,
+        470
+      ],
+      "caption": "Every mark gets a reason and a different action.",
+      "say": "Each mark gets a reason, and a different action. Not install it, call the number on the bank's own website. The alternative is the part that changes what happens next."
+    },
+    {
+      "id": "s06",
+      "shot": "02-address-check.png",
+      "crop": [
+        500,
+        470,
+        1405,
+        930
+      ],
+      "caption": "Addresses are read without being opened.",
+      "say": "Links are read without being opened, because opening them is the risk. Plain http, a cheap domain ending, a hyphen, and a bank's name sitting on a domain that is not the bank's."
+    },
+    {
+      "id": "s07",
+      "shot": "03-verify-card.png",
+      "crop": [
+        500,
+        250,
+        1405,
+        780
+      ],
+      "caption": "A channel the message cannot touch. Then a card for the fridge.",
+      "say": "Then it names the channel the message cannot touch, with the three sentences to say on the call. And a card for the fridge: never read out a code, never move money to a safe account, never install what a stranger sent."
+    },
+    {
+      "id": "s08",
+      "shot": "04-korean.png",
+      "crop": [
+        500,
+        0,
+        1405,
+        620
+      ],
+      "caption": "Korean and English, for the reader it was built around.",
+      "say": "All of it in Korean as well, because the people these messages reach are not reading security blogs in English at nine at night."
+    },
+    {
+      "id": "s09",
+      "shot": "05-tests.png",
+      "crop": [
+        500,
+        80,
+        1405,
+        780
+      ],
+      "caption": "94 assertions in a real browser. Zero network calls.",
+      "say": "Ninety four assertions run in a real browser, from the page itself. The suite checks that every rule fires, that ordinary messages stay quiet, and that a clean address is never called safe."
+    },
+    {
+      "id": "s10",
+      "shot": "title",
+      "caption": "Second Read — free, local, open source.",
+      "say": "Second Read. Free, local, open source, and it works offline. Read it twice before you act."
+    }
+  ]
+}

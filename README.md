@@ -8,12 +8,17 @@ Second Read answers that on the spot, in the browser, without sending the messag
 
 - **Live:** https://qkrrkdhzdl-arch.github.io/second-read/
 - **Tests:** https://qkrrkdhzdl-arch.github.io/second-read/tests.html (94/94)
+- **Demo (2m15s):** https://youtu.be/-3jeYXdwOHs
 
 ![The reading, the marks, and the same message untouched](docs/shots/01-verdict.png)
 ![Address check without opening the address](docs/shots/02-address-check.png)
 ![Channels the message cannot touch, and the card for the fridge](docs/shots/03-verify-card.png)
 ![Korean](docs/shots/04-korean.png)
 ![94 assertions in a real browser](docs/shots/05-tests.png)
+
+```
+python3 tools/make_video.py   # rebuilds the demo video from the same screenshots
+```
 
 ---
 
